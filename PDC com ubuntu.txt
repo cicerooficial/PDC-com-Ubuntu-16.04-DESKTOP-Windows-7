@@ -16,9 +16,9 @@ mv /etc/samba/smb.conf /etc/samba/smb.conf.old
 #Cola tudo abaixo
 
 [global]
-	workgroup = ch
-	netbios name = ch1 #Deve ser diferente do de cima
-	server string = ch SAMBA PDC
+	workgroup = [Nome do Dominio]
+	netbios name = [Nome do dominio com uma numero no final] #Deve ser diferente do de cima
+	server string = [Nome do dominio] SAMBA PDC
 
 	domain master = yes
 	domain logons = yes
