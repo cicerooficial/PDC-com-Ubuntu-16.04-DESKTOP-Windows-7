@@ -65,7 +65,7 @@ gravar e sair
 usa o comando
 testparm
 
-pega o IP  do ubuntu
+pega o IP  do ubuntu com o comando  ifconfig
 
 entra no windows 7 e tenta pingar o ip do ubuntu
 
@@ -73,15 +73,14 @@ No windows 7
 entra no cmd e digita
 ipconfig
 
-e pega o ip do windows também
+e pega o ip do windows també 
+ com  o comando ipconfig
+e ping o ip do ubuntu no windows com ping[IP do Ubuntu], se der certo ok siga para os passos abaixo se não,
+deve desligar o firewall do windows indo em Painel de Controle>Sistemas de Segurança>Firewall>Ativar ou Desativar o Windows Firewall
 
-e ping o ip do ubuntu, se der certo ok se não,
-deve desligar o firewall
+# Maiores explicações dos passos abaixo no video: https://www.youtube.com/watch?v=7r9BiONqa_0
 
-Seguir os passos de configuração do vídeo: https://www.youtube.com/watch?v=7r9BiONqa_0
-
-
-colocar usuario de acesso root para dominio
+Colocar usuario de acesso root para dominio
 smbpasswd -a root
 
 useradd -m -s /bin/false [nome da usuario]
@@ -92,12 +91,10 @@ pegar o nome da maquina do windows 7
 
 useradd -d /dev/null -s /bin/false [nome da máquina]$
 
-
 add usuario ao samba
 smbpasswd -a -m [nome da maquina]
 
 /etc/init.d/samba restart
-
 
 No windows 7 vá no caminho
 regedit
@@ -118,9 +115,13 @@ HKEY LOCAL MACHINE > system > CurrentControlSet > services>NetLogon>Parameters>
 StrongKey = 1
 
 
+Configurações > Alterar> Dominiio
 
-configurações > alterar> dominiio
+Habilitar domínio com nome do domínio usado no arquivo nano /etc/samba/smb.conf> OK> colocar como usuario root e senha a mesma de login do ubuntu 
 
-habilitar domínio com nome do domínio usado > OK
+#Seja feliz :)
+
+#30/10/2018 Administração de Redes de Computadores Centro Universitário SENAC
+
 
 
