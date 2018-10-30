@@ -6,24 +6,18 @@ apt-get update
 apt-get install samba smbclient
 apt-get update
 
-nano /etc/network/interfaces
+#Abra o terminal CTRL + ALT + T
 
-testparm
-
-[ENTER]
-
-nano /etc/samba/smb.conf
-
-move o arquivo para criação de backup
+#Mover o arquivo para criação de backup
 mv /etc/samba/smb.conf /etc/samba/smb.conf.old
 
-Modo global que vai definir as configurações do Samba
+#Modo global que vai definir as configurações do Samba
 
-cola tudo abaixo
+#Cola tudo abaixo
 
 [global]
 	workgroup = ch
-	netbios name = ch1
+	netbios name = ch1 #Deve ser diferente do de cima
 	server string = ch SAMBA PDC
 
 	domain master = yes
@@ -60,62 +54,63 @@ cola tudo abaixo
 	directory mask = 0700
 	browseable = no
 
-gravar e sair
+#Gravar e sair
 
-usa o comando
+#usar o comando para testar se foi alterado mesmo
 testparm
 
-pega o IP  do ubuntu com o comando  ifconfig
+#Pega o IP  do ubuntu com o comando  ifconfig
 
-entra no windows 7 e tenta pingar o ip do ubuntu
+#Entra no windows 7 e tenta pingar o ip do ubuntu no terminal com o comando 
+ping [IP Ubuntu]
 
-No windows 7
-entra no cmd e digita
+#No windows 7 entra no cmd e digita
 ipconfig
 
-e pega o ip do windows també 
- com  o comando ipconfig
-e ping o ip do ubuntu no windows com ping[IP do Ubuntu], se der certo ok siga para os passos abaixo se não,
-deve desligar o firewall do windows indo em Painel de Controle>Sistemas de Segurança>Firewall>Ativar ou Desativar o Windows Firewall
+#Pega o ip do windows também com  o comando
+ipconfig
+#E dê um ping o ip do ubuntu no windows com o comando
+ping[IP do Ubuntu]
+#Se der certo ok siga para os passos abaixo se não, deve desligar o firewall do windows indo em Painel de Controle>Sistemas de #Segurança>Firewall>Ativar ou Desativar o Windows Firewall
 
 # Maiores explicações dos passos abaixo no video: https://www.youtube.com/watch?v=7r9BiONqa_0
 
-Colocar usuario de acesso root para dominio
+#Colocar usuario de acesso root para dominio
+#Digite um senha contendo numeros, letras e caracteres especiais Ex: 123@ab
 smbpasswd -a root
 
-useradd -m -s /bin/false [nome da usuario]
+useradd -m -s /bin/false [nome do usuario]
 
-smbpasswd -a [nome da usuario NOVO]
+smbpasswd -a [nome do usuario]
 
-pegar o nome da maquina do windows 7
+#Pegar o nome da maquina do windows 7
 
 useradd -d /dev/null -s /bin/false [nome da máquina]$
 
-add usuario ao samba
+#Add usuario ao samba
 smbpasswd -a -m [nome da maquina]
 
 /etc/init.d/samba restart
 
-No windows 7 vá no caminho
+#No windows 7 vá no caminho
 regedit
 
 HKEY LOCAL MACHINE > system > CurrentControlSet > services>lammamworkstation>parameters
 
-criar novos arquivos
+#Criar novos arquivos
 DWORD "DomainCompatibilityMode"=dword:1
 DWORD "DNSNameResolutionRequired"=dword:0
 
-Vá para a pasta
+#Vá para a pasta
 HKEY LOCAL MACHINE > system > CurrentControlSet > control> Lsa
 
-criar novo arquivo
+#Criar novo arquivo
 DWORD "LmCompatibilityLevel"=dword:1
 
 HKEY LOCAL MACHINE > system > CurrentControlSet > services>NetLogon>Parameters>
 StrongKey = 1
 
-
-Configurações > Alterar> Dominiio
+#Computador> Propriedades do Sistema> Alterar Configurações> Alterar> Dominiio
 
 Habilitar domínio com nome do domínio usado no arquivo nano /etc/samba/smb.conf> OK> colocar como usuario root e senha a mesma de login do ubuntu 
 
