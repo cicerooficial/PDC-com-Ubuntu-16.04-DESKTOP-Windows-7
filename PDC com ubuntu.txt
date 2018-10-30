@@ -14,14 +14,12 @@ testparm
 
 nano /etc/samba/smb.conf
 
-move o arquivo para criação de backup
+move o arquivo para criaÃ§Ã£o de backup
 mv /etc/samba/smb.conf /etc/samba/smb.conf.old
 
-Modo global que vai definir as configurações do Samba
+Modo global que vai definir as configuraÃ§Ãµes do Samba
 
 cola tudo abaixo
-
-LINK: https://www.hardware.com.br/tutoriais/samba-pdc/
 
 [global]
 	workgroup = ch
@@ -75,12 +73,12 @@ No windows 7
 entra no cmd e digita
 ipconfig
 
-e pega o ip do windows também
+e pega o ip do windows tambÃ©m
 
-e ping o ip do ubuntu, se der certo ok se não,
+e ping o ip do ubuntu, se der certo ok se nÃ£o,
 deve desligar o firewall
 
-Seguir os passos de configuração do vídeo: https://www.youtube.com/watch?v=7r9BiONqa_0
+Seguir os passos de configuraÃ§Ã£o do vÃ­deo: https://www.youtube.com/watch?v=7r9BiONqa_0
 
 
 colocar usuario de acesso root para dominio
@@ -92,7 +90,7 @@ smbpasswd -a [nome da usuario NOVO]
 
 pegar o nome da maquina do windows 7
 
-useradd -d /dev/null -s /bin/false [nome da máquina]$
+useradd -d /dev/null -s /bin/false [nome da mÃ¡quina]$
 
 
 add usuario ao samba
@@ -101,7 +99,7 @@ smbpasswd -a -m [nome da maquina]
 /etc/init.d/samba restart
 
 
-No windows 7 vá no caminho
+No windows 7 vÃ¡ no caminho
 regedit
 
 HKEY LOCAL MACHINE > system > CurrentControlSet > services>lammamworkstation>parameters
@@ -110,7 +108,7 @@ criar novos arquivos
 DWORD "DomainCompatibilityMode"=dword:1
 DWORD "DNSNameResolutionRequired"=dword:0
 
-Vá para a pasta
+VÃ¡ para a pasta
 HKEY LOCAL MACHINE > system > CurrentControlSet > control> Lsa
 
 criar novo arquivo
@@ -121,8 +119,8 @@ StrongKey = 1
 
 
 
-configurações > alterar> dominiio
+configuraÃ§Ãµes > alterar> dominiio
 
-habilitar domínio com nome do domínio usado > OK
+habilitar domÃ­nio com nome do domÃ­nio usado > OK
 
 
