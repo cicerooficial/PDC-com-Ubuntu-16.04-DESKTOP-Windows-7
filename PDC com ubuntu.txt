@@ -1,0 +1,128 @@
+
+sudo su
+
+apt-get upgrade
+apt-get update
+apt-get install samba smbclient
+apt-get update
+
+nano /etc/network/interfaces
+
+testparm
+
+[ENTER]
+
+nano /etc/samba/smb.conf
+
+move o arquivo para criação de backup
+mv /etc/samba/smb.conf /etc/samba/smb.conf.old
+
+Modo global que vai definir as configurações do Samba
+
+cola tudo abaixo
+
+LINK: https://www.hardware.com.br/tutoriais/samba-pdc/
+
+[global]
+	workgroup = ch
+	netbios name = ch1
+	server string = ch SAMBA PDC
+
+	domain master = yes
+	domain logons = yes
+
+	security = user
+	encrypt passwords = yes
+	enable privileges = yes
+
+	preferred master = yes
+	local master = yes
+	os level = 100
+	wins support = yes
+
+	dns proxy = no
+	log file = /var/log/samba/log.%m
+	max log size = 1000
+	syslog = 0
+	panic action = /usr/share/samba/panic-action
+
+	ntlm auth = yes
+	lanman auth = yes
+	client ntlmv2 auth = yes
+
+[netlogon]
+	comment = Servico de Logon
+	path = /var/samba/netlogon
+	read only = yes
+	browseable = no
+
+[homes]
+	valid users = %S
+	create mask = 0700
+	directory mask = 0700
+	browseable = no
+
+gravar e sair
+
+usa o comando
+testparm
+
+pega o IP  do ubuntu
+
+entra no windows 7 e tenta pingar o ip do ubuntu
+
+No windows 7
+entra no cmd e digita
+ipconfig
+
+e pega o ip do windows também
+
+e ping o ip do ubuntu, se der certo ok se não,
+deve desligar o firewall
+
+Seguir os passos de configuração do vídeo: https://www.youtube.com/watch?v=7r9BiONqa_0
+
+
+colocar usuario de acesso root para dominio
+smbpasswd -a root
+
+useradd -m -s /bin/false [nome da usuario]
+
+smbpasswd -a [nome da usuario NOVO]
+
+pegar o nome da maquina do windows 7
+
+useradd -d /dev/null -s /bin/false [nome da máquina]$
+
+
+add usuario ao samba
+smbpasswd -a -m [nome da maquina]
+
+/etc/init.d/samba restart
+
+
+No windows 7 vá no caminho
+regedit
+
+HKEY LOCAL MACHINE > system > CurrentControlSet > services>lammamworkstation>parameters
+
+criar novos arquivos
+DWORD "DomainCompatibilityMode"=dword:1
+DWORD "DNSNameResolutionRequired"=dword:0
+
+Vá para a pasta
+HKEY LOCAL MACHINE > system > CurrentControlSet > control> Lsa
+
+criar novo arquivo
+DWORD "LmCompatibilityLevel"=dword:1
+
+HKEY LOCAL MACHINE > system > CurrentControlSet > services>NetLogon>Parameters>
+StrongKey = 1
+
+
+
+configurações > alterar> dominiio
+
+habilitar domínio com nome do domínio usado > OK
+
+
