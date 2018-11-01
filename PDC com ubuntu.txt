@@ -106,17 +106,25 @@ regedit
 
 HKEY LOCAL MACHINE > system > CurrentControlSet > services>lammamworkstation>parameters
 
-#Criar novos arquivos
-DWORD "DomainCompatibilityMode"=dword:1
-DWORD "DNSNameResolutionRequired"=dword:0
+#Crie um novo arquivo
+Botão direito > DWORD (32 Bits) 
+Insira o nome [DomainCompatibilityMode]
+Clique com o botão direito sobre o arquivo e altere o valor para 1
+
+#Crie um novo arquivo na mesma pasta
+Botão direito > DWORD (32 Bits) 
+Insira o nome [DNSNameResolutionRequired]
+Clique com o botão direito sobre o arquivo e altere o valor para 0
 
 #Vá para a pasta
 HKEY LOCAL MACHINE > system > CurrentControlSet > control> Lsa
 
-#Criar novo arquivo
-DWORD "LmCompatibilityLevel"=dword:1
+#Crie um novo arquivo
+Botão direito > DWORD (32 Bits)
+Insira o nome [LmCompatibilityLevel]
+Clique com o botão direito sobre o arquivo e altere o valor para 1
 
-HKEY LOCAL MACHINE > system > CurrentControlSet > services>NetLogon>Parameters> RequiredStrongKey = 1
+HKEY LOCAL MACHINE > system > CurrentControlSet > services>NetLogon>Parameters> RequiredStrongKey> Clique com o botão direito e altere o valor para 1
 
 #Computador> Propriedades do Sistema> Alterar Configurações> Alterar> Dominiio
 
