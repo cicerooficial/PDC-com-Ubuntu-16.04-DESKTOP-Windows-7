@@ -1,5 +1,5 @@
 
-cOM AS MÁQUINAS VIRTUAIS UBUNTU E WINDOWS 7 INTALADAS EXEOS COMANDO NO UBUNTU
+COM AS MÁQUINAS VIRTUAIS UBUNTU E WINDOWS 7 INTALADAS EXEOS COMANDO NO UBUNTU
 OBS: MÍN DE 4GB PARA CADA MÁQUINA VIRTUAL PARA NÃO TRAVAR
 *********************************************************************************************
 #No ubuntu abra o terminal CTRL + ALT + T e siga os comandos abaixo
