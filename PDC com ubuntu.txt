@@ -116,8 +116,7 @@ HKEY LOCAL MACHINE > system > CurrentControlSet > control> Lsa
 #Criar novo arquivo
 DWORD "LmCompatibilityLevel"=dword:1
 
-HKEY LOCAL MACHINE > system > CurrentControlSet > services>NetLogon>Parameters>
-StrongKey = 1
+HKEY LOCAL MACHINE > system > CurrentControlSet > services>NetLogon>Parameters> RequiredStrongKey = 1
 
 #Computador> Propriedades do Sistema> Alterar Configurações> Alterar> Dominiio
 
