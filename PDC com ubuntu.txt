@@ -1,4 +1,9 @@
 
+cOM AS MÁQUINAS VIRTUAIS UBUNTU E WINDOWS 7 INTALADAS EXEOS COMANDO NO UBUNTU
+OBS: MÍN DE 4GB PARA CADA MÁQUINA VIRTUAL PARA NÃO TRAVAR
+*********************************************************************************************
+#No ubuntu abra o terminal CTRL + ALT + T e siga os comandos abaixo
+
 sudo su
 
 apt-get upgrade
@@ -6,14 +11,15 @@ apt-get update
 apt-get install samba smbclient
 apt-get update
 
-#Abra o terminal CTRL + ALT + T
-
 #Mover o arquivo para criação de backup
 mv /etc/samba/smb.conf /etc/samba/smb.conf.old
 
 #Modo global que vai definir as configurações do Samba
 
-#Cola tudo abaixo
+#Entre no arquivo pelo comando
+nano /etc/samba/smb.conf
+
+#Cola tudo abaixo no final alterando do dados entre [] (LEMBRE DE TIRAR AS CHAVES)
 
 [global]
 	workgroup = [Nome do Dominio]
@@ -60,9 +66,12 @@ mv /etc/samba/smb.conf /etc/samba/smb.conf.old
 testparm
 
 #Pega o IP  do ubuntu com o comando  ifconfig
-
+*********************************************************************************************
 #Entra no windows 7 e tenta pingar o ip do ubuntu no terminal com o comando 
 ping [IP Ubuntu]
+
+#No Windows 7 deve desligar o firewall do Windows indo em
+Painel de Controle>Sistemas de #Segurança>Firewall>Ativar ou Desativar o Windows Firewall
 
 #No windows 7 entra no cmd e digita
 ipconfig
@@ -71,9 +80,9 @@ ipconfig
 ipconfig
 #E dê um ping o ip do ubuntu no windows com o comando
 ping[IP do Ubuntu]
-#Se der certo ok siga para os passos abaixo se não, deve desligar o firewall do windows indo em Painel de Controle>Sistemas de #Segurança>Firewall>Ativar ou Desativar o Windows Firewall
 
 # Maiores explicações dos passos abaixo no video: https://www.youtube.com/watch?v=7r9BiONqa_0
+*********************************************************************************************
 
 #Colocar usuario de acesso root para dominio
 #Digite um senha contendo numeros, letras e caracteres especiais Ex: 123@ab
@@ -85,13 +94,13 @@ smbpasswd -a [nome do usuario]
 
 #Pegar o nome da maquina do windows 7
 
-useradd -d /dev/null -s /bin/false [nome da máquina]$
+useradd -d /dev/null -s /bin/false [nome da máquina]$(com o asterístico)
 
 #Add usuario ao samba
 smbpasswd -a -m [nome da maquina]
 
 /etc/init.d/samba restart
-
+*********************************************************************************************
 #No windows 7 vá no caminho
 regedit
 
