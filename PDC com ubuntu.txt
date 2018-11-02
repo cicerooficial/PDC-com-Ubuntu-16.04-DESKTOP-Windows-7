@@ -128,8 +128,7 @@ HKEY LOCAL MACHINE > system > CurrentControlSet > services>NetLogon>Parameters> 
 
 #Computador> Propriedades do Sistema> Alterar Configurações> Alterar> Dominiio
 
-Habilitar domínio com nome do domínio usado no arquivo nano /etc/samba/smb.conf> OK> colocar como usuario root e senha a mesma de login do ubuntu 
-
+Habilitar domínio com nome do domínio usado no arquivo nano /etc/samba/smb.conf> OK> Colocar root como usuario e senha a mesma #apresntada no comando smbpasswd -a root (passo da linha 89)
 #Seja feliz :)
 
 #30/10/2018 Administração de Redes de Computadores Centro Universitário SENAC
